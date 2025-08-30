@@ -5,17 +5,17 @@ void getChecksum(int32_t *zSamples, int32_t *eSamples, int32_t *nSamples, uint8_
     uint8_t *bytes;
 
     bytes = (uint8_t*) zSamples;
-    for (uint8_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
+    for (size_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
         calcChecksum[0] ^= bytes[i];
     }
 
     bytes = (uint8_t*) eSamples;
-    for (uint8_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
+    for (size_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
         calcChecksum[1] ^= bytes[i];
     }
 
     bytes = (uint8_t*) nSamples;
-    for (uint8_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
+    for (size_t i = 0; i < SAMPLE_COUNT * sizeof(int32_t); i++) {
         calcChecksum[2] ^= bytes[i];
     }
 }
@@ -29,7 +29,7 @@ void packAndSendPacket(int32_t *channelZ, int32_t *channelE, int32_t *channelN) 
     packet.header[1] = 0x1B;
 
     // DATA
-    for (int i = 0; i < SAMPLE_COUNT; i++) {
+    for (size_t i = 0; i < SAMPLE_COUNT; i++) {
         packet.channelZ[i] = channelZ[i];
         packet.channelE[i] = channelE[i];
         packet.channelN[i] = channelN[i];

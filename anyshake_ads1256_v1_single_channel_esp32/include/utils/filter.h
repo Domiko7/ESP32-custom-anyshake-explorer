@@ -37,7 +37,7 @@ typedef struct {
 
 void filter_iir_df1_new(filter_iir_df1_t* filter, const float* b, const float* a);
 void apply_data_compensation(int32_t* arr, uint16_t len, filter_iir_df1_t* df1_filter);
-void filter__iir_sos_new(filter_iir_sos_t* filter, const float sos[2][6]);
+void filter_iir_sos_new(filter_iir_sos_t* filter, const float sos[2][6]);
 void filter_iir_sos_apply(filter_iir_sos_t* filter, float* input, uint16_t input_size, float* output);
 void apply_data_pre_processing(int32_t* arr, uint16_t len, filter_iir_sos_t* pre_processing_filter);
 

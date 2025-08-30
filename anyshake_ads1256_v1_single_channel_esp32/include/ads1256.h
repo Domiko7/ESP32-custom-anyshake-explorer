@@ -9,7 +9,7 @@ class ADS1256 {
     public:
         ADS1256(uint8_t sps, uint8_t g);
         void initADS();
-        long readRaw();
+        int32_t readRaw();
 
     private:
         uint8_t sampleRate;
