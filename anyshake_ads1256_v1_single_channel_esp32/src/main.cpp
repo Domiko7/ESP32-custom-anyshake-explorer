@@ -31,8 +31,10 @@ void setup() {
 
   adc.initADS();
 
-  filter_iir_sos_new(&zAxisPreProcessingHighpassFilter, PRE_PROC_HPF_COEFFS);
-
+  #if ENABLE_HIGH_PASS == true
+    filter_iir_sos_new(&zAxisPreProcessingHighpassFilter, PRE_PROC_HPF_COEFFS);
+  #endif
+  
   #if ENABLE_COMPENSATION == true
     filter_iir_df1_new(&zAxisCompensationFilter, COMPENSATION_COEFFS_B, COMPENSATION_COEFFS_A);
   #endif
@@ -72,4 +74,5 @@ void loop() {
     }
   }
 }
+
 
